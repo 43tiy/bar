@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>43tiy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto 0 auto;
+      padding: 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #ffffff;
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #ff7f50;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animated {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      opacity: 0;
+    }
+
+    .fadeInUp {
+      animation-name: fadeInUp;
+    }
+
+    .option {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .option label {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      color: #ffffff;
+      flex: 0 0 auto;
+    }
+
+    .option input[type="radio"] {
+      display: none;
+    }
+
+    .option input[type="radio"]+label {
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      font-size: 16.5px;
+      border: 1px solid transparent;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .option input[type="radio"]+label:focus {
+      outline: none;
+    }
+
+    .option input[type="radio"]:checked+label {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .text {
+      display: none;
+    }
+
+    .text.active {
+      display: block;
+      animation: fadeInUp 1s ease;
+    }
+
+    .side-content {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .side-content img {
+      max-width: 400px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .section-title {
+      font-size: 30px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin-top: 20px;
+      }
+
+      .option label {
+        margin-right: 10px;
+        margin-bottom: 3px;
+      }
+
+      .option input[type="radio"]+label {
+        padding: 10px 12px;
+        border-radius: 12px;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        font-size: 16.5px;
+        border: 1px solid transparent;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .side-content img {
+        margin-bottom: 10px;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 47px;
+        background-color: rgba(27, 27, 27, 0.65);
+        backdrop-filter: blur(11px);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0;
+        z-index: 1000;
+      }
+
+      .option {
+        flex: 1;
+        justify-content: space-around;
+        margin-bottom: 0;
+      }
+
+      .option input[type="radio"]+label {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+      }
+
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .side-content {
+        margin-bottom: 60px;
+      }
+    }
+
+    /* New styles for the grey box with icon and text */
+    .github-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #151515;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 330px;
+    }
+
+    .github-icon {
+      font-size: 30px;
+      margin-right: 10px;
+    }
+
+    .github-text {
+      flex-grow: 1;
+    }
+
+    .github-title {
+      font-weight: bold;
+      display: block;
+    }
+
+    .github-description {
+      color: #cccccc;
+    }
+
+    .github-link {
+      color: #ffffff;
+      margin-right: 10px;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .github-link:hover {
+      color: #ff7f50;
+    }
+    </style>
+    </head>
+
+<body>
+  <div class="container">
+    <main>
+      <section class="section animated fadeInUp">
+      </section>
+      <div id="texts">
+        <div class="text active" id="text1">
+          <div class="section-title">Сделал Сережа, для своих броу <3 </div>
+          <div class="side-content">
+            <img src="image1.jpg" alt="Image 1">
+            <p>Технологички, Настойки, заготовки</p>
+          </div>
+        </div>
+        <div class="text" id="text2">
+          <div class="section-title">Коктейли</div>
+          <div class="side-content">
+            <img src="image2.jpg" alt="Image 2">
+            <p> Мохито (алк/без алк) 300мл(банка)
+                          <ul>
+   
+                             <li> Ром (для кок-лей) - 50 мл </li>
+                             <li> Газированная вода - 200 мл </li>
+                            <li>  Лайм - 5 долек(4 если дольки большие) </li>
+                            <li>  Мята - 2гр </li>
+                            <li>  Лед для - 100г(+- два черпака) </li>
+
+                                  </ul>
+								  
+			
+			<figure class="sign">
+   <p><img src="kloverclub.jpg" width="150" height="212" alt="Кловер Клаб 100мл(шале)"></p>
+   <figcaption>Кловер Клаб 100мл(шале)</figcaption>
+  </figure>
+                          <ul>
+                          <p> - делается в шейкере </p>  
+                             <li> Настойка джин на малине - 50 мл </li>
+                             <li> Микс кислот - 20 мл </li>
+                            <li>  Сахарный сироп - 20 мл </li>
+                            <li>  БаблДропс - 2капельки </li>
+                            <li>  Малина сублимированная - 2г </li>
+                      <p> ! ДОБАВИТЬ БАБЛ ДРОПС, ПОСЛЕ ШЕЙКА СО ЛЬДОМ </p>  
+					  <p> ! СЛИЛИ ЛЕД, ДОБАВИЛИ В ШЕЙКЕР БАБЛ ДРОПС, И СДЕЛАЛИ СУХОЙ ШЕЙК(пена гуще) </p> 
+                                  </ul>
+								  
+								  <figure class="sign">
+   <p><img src="yagoda.jpg" width="150" height="212" alt="Лимонад Ягодный 300мл(банка)"></p>
+   <figcaption>Лимонад Ягодный 300мл(банка)</figcaption>
+  </figure>
+                          <ul>
+                             <li> Ягодное пюре - 50 мл </li>
+                             <li> Микс кислот - 20 мл </li>
+                            <li>  Сахарный сироп - 20 мл </li>
+                            <li>  Газированная Вода - 200 </li>
+                            <li>  Мята - 2г </li>
+                            <li>  Лимон - 11г </li>
+
+                                  </ul>
+
+<figure class="sign">
+   <p><img src="pornstar.jpg" width="150" height="212" alt="Порнстар Мартини 150мл(шале)"></p>
+   <figcaption>Порнстар Мартини 150мл(шале)</figcaption>
+  </figure>
+                          <ul>
+                      <p> - делается в шейкере(после </p>   
+                             <li> Настойка Маракуйя - 60 мл </li>
+                             <li> Микс кислот - 15 мл </li>
+                            <li>  Ванильный сироп - 20 мл </li>
+                            <li>  Шампанское для (для кок-лей) - 50мл </li>
+                            <li>  Лед - 5г </li>
+
+                                  </ul>
+
+<figure class="sign">
+   <p><img src="malina.jpg" width="150" height="265" alt="Пивной Коктейль Малиновая Нирвана(Тюльпан"></p>
+   <figcaption>Пивной Коктейль Малиновая Нирвана(Тюльпан)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Пиво Хеллес - 250 мл </li>
+                             <li> Джин (для кок-лей) - 20 мл </li>
+                            <li>  Малиновый сироп - 20 мл </li>
+                            <li>  Апельсин - 15гр </li>
+                            <li>  Лед - полный стакан) </li>
+
+                                  </ul>
+								  
+								  
+<figure class="sign">
+   <p><img src="visochestvo.jpg" width="150" height="265" alt="Пивной Коктейль Ваше Высочество(Тюльпан)"></p>
+   <figcaption>Пивной Коктейль Ваше Высочество(Тюльпан)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Пиво Хеллес - 200 мл </li>
+                             <li> Вермут Мартини Бьянко - 50 мл </li>
+                            <li>  Гренадин сироп - 20 мл </li>
+                            <li>  Апельсин - 15гр </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+								  <figure class="sign">
+   <p><img src="-" width="150" height="265" alt="Пивной Коктейль Дорогая Блондинка(Тюльпан"></p>
+   <figcaption>Пивной Коктейль Дорогая Блондинка(Тюльпан)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Пиво Хеллес - 150 мл </li>
+                             <li> Шампанское - 100 мл </li>
+                            <li>  Сок Ананасовый - 50 мл </li>
+                            <li>  Апельсин - 15гр </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+								  <figure class="sign">
+   <p><img src="-" width="150" height="265" alt="Пивной Коктейль Черный Егерь(Тюльпан)"></p>
+   <figcaption>Пивной Коктейль Черный Егерь(Тюльпан)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Пиво Дункель - 250 мл </li>
+                             <li> Ликер Ягермастер - 50 мл </li>
+                            <li>  Апельсин - 15гр </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+								  								  <figure class="sign">
+   <p><img src="-" width="150" height="265" alt="Пивной Коктейль Белоснежка(300)"></p>
+   <figcaption>Пивной Коктейль Белоснежка(Тюльпан)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Пиво Хеллес - 250 мл </li>
+                             <li> Спрайт - 100 мл </li>
+                            <li>  Лайм - 1долька </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+
+<p><img src="fiero.jpg" width="150" height="265" alt="Мартини Фиер Тоник 300мл(Винный)"></p>
+   <figcaption>Мартини Фиер Тоник 300мл(Винный)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Вермут Мартини Фиеро - 60 мл </li>
+                             <li> Тоник (для кок-лей) - 120 мл </li>
+                            <li>  Апельсин - 15гр </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+								  <p><img src="Royale.jpg" width="150" height="265" alt="Мартини Рояле 300мл(Винный)"></p>
+   <figcaption>Мартини Рояле 300мл(Винный)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Вермут Мартини Бьянко - 60 мл </li>
+                             <li> Шампанское - 100 мл </li>
+                             <li> Газированная вода - 80 мл </li>
+                             <li> Мята - 5 гр(украшение) </li>
+                            <li>  Лайм - 1 долька </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+								  <p><img src="spritz.jpg" width="150" height="265" alt="Апероль Шприц 300мл(Винный)"></p>
+   <figcaption>Апероль Шприц 300мл(Винный)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Апероль - 50 мл </li>
+                             <li> Шампанское - 100 мл </li>
+                             <li> Газированная вода - 80 мл </li>
+                            <li>  Апельсин - 15гр </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+								  <p><img src="Negroni.jpg" width="150" height="265" alt="Негрони(олдфэшн)"></p>
+   <figcaption>Негрони(олдфэшн)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Джин (для кок-лей) - 30 мл </li>
+                             <li> Настойка Джин на малине - 30 мл </li>
+                             <li> Биттер Кампари - 30 мл </li>
+                            <li>  Апельсин - 15гр </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+								  								  <p><img src="daikiri.jpg" width="150" height="265" alt="Дайкири 100мл(шале)"></p>
+   <figcaption>Дайкири 100мл(шале)</figcaption>
+  </figure>
+  
+                          <ul>  
+                             <li> Ром для (для кок-лей) - 50 мл </li>
+                             <li> Сок лайма - 20 мл </li>
+                             <li> Сахарный Сироп - 15 мл </li>
+                            <li>  Лайм - 1долька </li>
+                            <li>  Лед - 5кубиков </li>
+
+                                  </ul>
+								  
+          </div>
+        </div>
+        <div class="text" id="text3">
+          <div class="section-title">Настойки ( скоро )</div>
+          <div class="side-content">
+            
+          </div>
+        </div>
+        <div class="text" id="text4">
+          <div class="section-title">Спасибо</div>
+          <div class="side-content">
+            
+            </div>
+  </div>
+  </div>
+  </div>
+  </main>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="option">
+      <input type="radio" id="mobile-option1" name="mobileTextOption" value="option1" checked>
+      <label for="mobile-option1"><i class="fas fa-home"></i></label>
+      <input type="radio" id="mobile-option2" name="mobileTextOption" value="option2">
+      <label for="mobile-option2"><i class="fas fa-paint-brush"></i></label>
+      <input type="radio" id="mobile-option3" name="mobileTextOption" value="option3">
+      <label for="mobile-option3"><i class="fas fa-code"></i></label>
+      <input type="radio" id="mobile-option4" name="mobileTextOption" value="option4">
+      <label for="mobile-option4"><i class="fas fa-ellipsis-h"></i></label>
+    </div>
+  </div>
+
+  <script>
+    const handleOptionChange = (name) => {
+      document.querySelectorAll('.text').forEach((text) => {
+        text.classList.remove('active');
+      });
+      const selectedTextId = 'text' + document.querySelector(`input[name="${name}"]:checked`).value.substr(-1);
+      document.getElementById(selectedTextId).classList.add('active');
+    };
+
+    document.querySelectorAll('input[name="textOption"]').forEach((input) => {
+      input.addEventListener('change', () => handleOptionChange('textOption'));
+    });
+
+    document.querySelectorAll('input[name="mobileTextOption"]').forEach((input) => {
+      input.addEventListener('change', () => handleOptionChange('mobileTextOption'));
+    });
+  </script>
+</body>
+
+</html>
